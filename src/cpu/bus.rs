@@ -1,5 +1,6 @@
 use super::memory::Memory;
 
+#[derive(Default, Debug)]
 pub struct AddressBus {
     address: u32,
     memory: Memory,

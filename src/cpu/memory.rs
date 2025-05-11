@@ -1,3 +1,6 @@
+const MEMORY_SIZE: usize = 0x0010_0000; // 1 Mb of memory
+
+#[derive(Debug, Default)]
 pub struct Memory {
     /// The memory array that stores the data.
     /// 1 Mb of memory (0x0000_0000 - 0x000F_FFFF)
@@ -8,7 +11,9 @@ pub struct Memory {
 
 impl Memory {
     pub fn new() -> Self {
-        Self { data: Vec::new() }
+        Self {
+            data: vec![0u8; MEMORY_SIZE],
+        }
     }
     pub fn read(&self, address: u32) -> u8 {
         self.data[address as usize]

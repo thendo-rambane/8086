@@ -2,7 +2,8 @@ use super::bus;
 // use crate::bus::AddressBus;
 
 /// Represents the Bus Interface Unit (BIU) of the CPU, which is responsible for interfacing with the system bus.
-pub struct BusInterfaceUnit<'bus> {
+#[derive(Debug)]
+pub struct BusInterfaceUnit<'a> {
     /// Extra Segment; points to an additional segment of memory
     es: u16,
     /// Code Segment; points to the segment of memory containing the current program
@@ -16,7 +17,7 @@ pub struct BusInterfaceUnit<'bus> {
 
     /// Queue of bytes to be read from memory
     instruction_queue: Vec<u8>,
-    bus: &'bus mut bus::AddressBus,
+    bus: &'a mut bus::AddressBus,
 }
 
 impl<'a> BusInterfaceUnit<'a> {
